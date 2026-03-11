@@ -2,7 +2,7 @@ deployment:
   enabled: true
   type: server
   
-  replicas: 300 # LOL GET REKT
+  replicas: 3000 # LOL GET REKT!
 
   terminationGracePeriodSeconds: 30
   reaperPermissions: allowed
