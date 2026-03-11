@@ -36,7 +36,7 @@ application:
   args:
 
 image:
-  repository: sadtimus/pingpong:latest
+  repository: sadtimus/pingpong
   tag: 'latest'
   pullPolicy: IfNotPresent
 resources:
