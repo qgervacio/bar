@@ -1,7 +1,7 @@
 deployment:
   enabled: true
   type: server
-  replicas: 1
+  replicas: 3
   terminationGracePeriodSeconds: 30
   reaperPermissions: allowed
   containerPort: 8080
