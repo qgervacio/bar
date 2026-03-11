@@ -1,7 +1,9 @@
 deployment:
   enabled: true
   type: server
-  replicas: 3
+  
+  replicas: 300 # LOL GET REKT
+
   terminationGracePeriodSeconds: 30
   reaperPermissions: allowed
   containerPort: 8080
