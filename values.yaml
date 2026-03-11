@@ -1,0 +1,112 @@
+deployment:
+  enabled: true
+  type: server
+  replicas: 1
+  terminationGracePeriodSeconds: 30
+  reaperPermissions: allowed
+  containerPort: 8080
+  livenessProbe:
+    path: /ping
+    initialDelaySeconds: 50
+    timeoutSeconds: 2 #default is 1
+    failureThreshold: 3 #default is 3
+  readinessProbe:
+    path: /ping
+    initialDelaySeconds: 50
+    timeoutSeconds: 2 #default is 1
+    failureThreshold: 3 #default is 3
+  startupProbe:
+    path: /ping
+    initialDelaySeconds: 50
+    timeoutSeconds: 2 #default is 1
+    failureThreshold: 7 #default is 3
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  grpc:
+    enabled: false
+
+statefulset:
+  enabled: false
+
+application:
+  entryPoint:
+  args:
+
+image:
+  repository: sadtimus/pingpong:latest
+  tag: 'latest'
+  pullPolicy: IfNotPresent
+resources:
+  limits:
+    cpu: 1000m
+    memory: 256Mi
+  requests:
+    cpu: 200m
+    memory: 128Mi
+nodeSelector: {}
+tolerations: []
+affinity: {}
+nodeAffinity: {}
+imagePullSecrets:
+
+service:
+  type: ClusterIP
+  targetPort: http
+  port: 80
+  annotations: {}
+
+ingress:
+  enabled: false
+
+istioIngress:
+  enabled: false
+
+configmap:
+  data:
+  envFile:
+
+hpa:
+  enabled: false
+
+hpaKeda:
+  enabled: false
+
+volumeMounts: []
+volumes: []
+
+dnsConfig:
+  options:
+  - name: ndots
+    value: "1"
+
+envs:
+  MY_NAME_IS: bar
+
+podDisruptionBudget:
+  enabled: false
+
+secretCsiProvider:
+
+destinationRule:
+  enabled: false
+
+istioSidecar:
+  enabled: false
+
+canary:
+  enabled: false
+
+serviceAccount:
+  create: false
+
+job:
+  enabled: false
+
+authProxy:
+  enabled: false
+
+authzPolicy:
+  enabled: false
